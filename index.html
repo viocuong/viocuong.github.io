@@ -1,35 +1,286 @@
-<!DOCTYPE html>
-<html lang="vi">
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>MathBlitz - Master Mental Calculation</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--neon: #00f5ff;
+				--neon-green: #00ff88;
+				--neon-pink: #ff3cac;
+				--dark-bg: #0d0d1a;
+				--dark-card: #1e1e38;
+				--gold: #ffaa00;
+				--silver: #b0b0c0;
+				--white: #ffffff;
+			}
 
-<head>
-    <title>Page</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</head>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				font-family: 'Inter', sans-serif;
+				background-color: var(--dark-bg);
+				color: var(--white);
+				line-height: 1.6;
+				overflow-x: hidden;
+			}
 
-<body style="background-color:#ff9a76;">
-    <div class="container">
-        <div class="row w-100 p-5">
-           <h1 class="p-3"> Mình là Hiệp 12A5</h1>
-        </div>
-        <a onclick="clickme()" class="p-3 button button-warning row w-100">
-            ấn vào đây
-        </a>
-    </div>
-    <script>
-        function clickme(){
-            alert('Ấn ấn cái đầu buồi !');
-        }
-    </script>
-</body>
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
 
+			/* Navigation */
+			nav {
+				padding: 30px 0;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.logo {
+				font-weight: 900;
+				font-size: 24px;
+				color: var(--neon);
+				letter-spacing: -1px;
+				text-decoration: none;
+			}
+			.nav-links {
+				display: flex;
+				gap: 30px;
+			}
+			.nav-links a {
+				color: var(--silver);
+				text-decoration: none;
+				font-size: 14px;
+				font-weight: 600;
+				transition: color 0.3s;
+			}
+			.nav-links a:hover {
+				color: var(--neon);
+			}
+
+			/* Hero Section */
+			.hero {
+				padding: 100px 0;
+				text-align: center;
+			}
+			.hero h1 {
+				font-size: 80px;
+				font-weight: 900;
+				line-height: 0.9;
+				margin-bottom: 20px;
+				letter-spacing: -3px;
+			}
+			.hero h1 span {
+				color: var(--neon);
+				text-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+			}
+			.hero p {
+				font-size: 20px;
+				color: var(--silver);
+				max-width: 600px;
+				margin: 0 auto 40px;
+			}
+
+			.app-icon {
+				width: 120px;
+				height: 120px;
+				border-radius: 28px;
+				margin-bottom: 30px;
+				box-shadow:
+					0 20px 40px rgba(0, 0, 0, 0.5),
+					0 0 20px rgba(0, 245, 255, 0.2);
+				border: 2px solid rgba(0, 245, 255, 0.3);
+			}
+
+			.btn-primary {
+				display: inline-block;
+				padding: 18px 40px;
+				background: linear-gradient(
+					135deg,
+					var(--neon),
+					var(--neon-green)
+				);
+				color: var(--dark-bg);
+				text-decoration: none;
+				border-radius: 50px;
+				font-weight: 900;
+				font-size: 18px;
+				letter-spacing: 1px;
+				transition:
+					transform 0.3s,
+					box-shadow 0.3s;
+				box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+			}
+			.btn-primary:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 15px 40px rgba(0, 245, 255, 0.5);
+			}
+
+			/* Features Section */
+			.features {
+				padding: 100px 0;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 30px;
+			}
+			.feature-card {
+				background-color: var(--dark-card);
+				padding: 40px;
+				border-radius: 24px;
+				border: 1px solid rgba(255, 255, 255, 0.05);
+				transition: border-color 0.3s;
+			}
+			.feature-card:hover {
+				border-color: var(--neon);
+			}
+			.feature-icon {
+				font-size: 40px;
+				margin-bottom: 20px;
+			}
+			.feature-card h3 {
+				font-size: 22px;
+				margin-bottom: 15px;
+				color: var(--white);
+			}
+			.feature-card p {
+				color: var(--silver);
+				font-size: 15px;
+			}
+
+			/* Showcase / Screenshot Section */
+			.showcase {
+				padding: 100px 0;
+				text-align: center;
+			}
+			.showcase h2 {
+				font-size: 40px;
+				margin-bottom: 50px;
+				font-weight: 900;
+			}
+			.mockup-container {
+				width: 100%;
+				max-width: 400px;
+				margin: 0 auto;
+				border-radius: 40px;
+				border: 8px solid #222;
+				overflow: hidden;
+				box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
+			}
+			.mockup-container img {
+				width: 100%;
+				display: block;
+			}
+
+			/* Footer */
+			footer {
+				padding: 60px 0;
+				border-top: 1px solid rgba(255, 255, 255, 0.05);
+				text-align: center;
+				color: var(--silver);
+				font-size: 14px;
+			}
+			.footer-links {
+				margin-top: 20px;
+				display: flex;
+				justify-content: center;
+				gap: 30px;
+			}
+			.footer-links a {
+				color: var(--neon);
+				text-decoration: none;
+			}
+
+			/* Responsive */
+			@media (max-width: 768px) {
+				.hero h1 {
+					font-size: 50px;
+				}
+				.hero p {
+					font-size: 16px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<nav>
+				<a href="#" class="logo">MathBlitz⚡</a>
+				<div class="nav-links">
+					<a href="#features">Features</a>
+					<a href="#demo">Demo</a>
+					<a href="privacy-policy.html">Privacy</a>
+				</div>
+			</nav>
+
+			<section class="hero">
+				<img
+					src="/Users/cuongnv/.gemini/antigravity/brain/923a5c29-701d-475f-b55c-7c20aaffbdf6/mathblitz_app_icon_1774457854681.png"
+					alt="MathBlitz Icon"
+					class="app-icon"
+				/>
+				<h1>Master Your <span>Brain</span></h1>
+				<p>
+					Develop lightning-fast mental math skills with the most
+					addictive training game on Android.
+				</p>
+				<a href="#" class="btn-primary">GET IT ON GOOGLE PLAY</a>
+			</section>
+
+			<section id="features" class="features">
+				<div class="feature-card">
+					<div class="feature-icon">⚡</div>
+					<h3>Speed Training</h3>
+					<p>
+						60-second intense calculation rounds to sharpen your
+						focus and response time.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🔥</div>
+					<h3>Combo Streaks</h3>
+					<p>
+						Accumulate correct answers to ignite the flame and
+						multiply your score exponentially.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🏆</div>
+					<h3>Rank & Legend</h3>
+					<p>
+						Level up from Newbie to Legend. Track your progress with
+						detailed stats and stats.
+					</p>
+				</div>
+			</section>
+
+			<section id="demo" class="showcase">
+				<h2>Experience the Speed</h2>
+				<div class="mockup-container">
+					<!-- Use the feature graphic as a placeholder for screenshot -->
+					<img
+						src="/Users/cuongnv/.gemini/antigravity/brain/923a5c29-701d-475f-b55c-7c20aaffbdf6/mathblitz_feature_graphic_1774458075282.png"
+						alt="MathBlitz Gameplay"
+					/>
+				</div>
+			</section>
+
+			<footer>
+				<p>&copy; 2026 MathBlitz Team. All rights reserved.</p>
+				<div class="footer-links">
+					<a href="privacy-policy.html">Privacy Policy</a>
+					<a href="mailto:support@mathblitz.com">Contact Support</a>
+				</div>
+			</footer>
+		</div>
+	</body>
 </html>
